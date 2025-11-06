@@ -9,23 +9,23 @@ import gradio as gr
 
 load_dotenv(override=True)
 
-def push(text):
-    requests.post(
-        "https://api.pushover.net/1/messages.json",
-        data={
-            "token": os.getenv("PUSHOVER_TOKEN"),
-            "user": os.getenv("PUSHOVER_USER"),
-            "message": text,
-        }
-    )
+# def push(text):
+#     requests.post(
+#         "https://api.pushover.net/1/messages.json",
+#         data={
+#             "token": os.getenv("PUSHOVER_TOKEN"),
+#             "user": os.getenv("PUSHOVER_USER"),
+#             "message": text,
+#         }
+    # )
 
 
 def record_user_details(email, name="Name not provided", notes="not provided"):
-    push(f"Recording {name} with email {email} and notes {notes}")
+    # push(f"Recording {name} with email {email} and notes {notes}")
     return {"recorded": "ok"}
 
 def record_unknown_question(question):
-    push(f"Recording {question}")
+    # push(f"Recording {question}")
     return {"recorded": "ok"}
 
 record_user_details_json = {
@@ -76,7 +76,10 @@ tools = [{"type": "function", "function": record_user_details_json},
 class Me:
 
     def __init__(self):
-        self.openai = OpenAI()
+        self.gemini = OpenAI(
+            api_key=os.getenv("GEMINI_API_KEY"),
+            base_url="https://generativelanguage.googleapis.com/v1beta/openai"
+        )
         self.name = "Ed Donner"
         reader = PdfReader("me/linkedin.pdf")
         self.linkedin = ""
@@ -116,7 +119,7 @@ If the user is engaging in discussion, try to steer them towards getting in touc
         messages = [{"role": "system", "content": self.system_prompt()}] + history + [{"role": "user", "content": message}]
         done = False
         while not done:
-            response = self.openai.chat.completions.create(model="gpt-4o-mini", messages=messages, tools=tools)
+            response = self.gemini.chat.completions.create(model="gemini-2.5-flash", messages=messages, tools=tools)
             if response.choices[0].finish_reason=="tool_calls":
                 message = response.choices[0].message
                 tool_calls = message.tool_calls
