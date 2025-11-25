@@ -1,4 +1,5 @@
-from agents import Agent, WebSearchTool, ModelSettings
+from agents import WebSearchTool, ModelSettings
+from simple_agent import SimpleAgent as Agent
 
 INSTRUCTIONS = (
     "You are a research assistant. Given a search term, you search the web for that term and "

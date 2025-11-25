@@ -35,18 +35,6 @@ class SimpleAgent(Agent):
                     break
             if api_key is None:
                 raise ValueError(f"模型名称 '{model}' 不支持。")
-        
-        # GPT 模型使用原生字符串（支持托管工具），其他用 ChatCompletions
-        if model_lower.startswith("gpt"):
-            # 直接传字符串，让 OpenAI SDK 使用原生 API（支持 WebSearchTool 等）
-            model_instance = model
-        else:
-            # DeepSeek/Gemini 使用 ChatCompletions API
-            client = AsyncOpenAI(
-                api_key=api_key,
-                base_url=base_url
-            )
-            model_instance = OpenAIChatCompletionsModel(openai_client=client, model=model)
 
         super().__init__(
             model=model_instance,
