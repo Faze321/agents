@@ -2,9 +2,6 @@
 # src/financial_researcher/main.py
 import os
 
-# 禁用遥测
-os.environ['OTEL_SDK_DISABLED'] = 'true'
-
 from financial_researcher.crew import ResearchCrew
 
 # Create output directory if it doesn't exist
