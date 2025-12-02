@@ -6,7 +6,7 @@ propose:
   expected_output: >
     Your clear argument in favor of the motion, in a concise manner.
   agent: debater
-  output_file: output/propose.md
+  output_file: output/propose2.md
 
 oppose:
   description: >
@@ -16,7 +16,7 @@ oppose:
   expected_output: >
     Your clear argument against the motion, in a concise manner.
   agent: debater
-  output_file: output/oppose.md
+  output_file: output/oppose2.md
 
 decide:
   description: >
@@ -24,4 +24,4 @@ decide:
   expected_output: >
     Your decision on which side is more convincing, and why.
   agent: judge
-  output_file: output/decide.md
+  output_file: output/decide2.md

@@ -26,3 +26,6 @@ def run():
         print(result.raw)
     except Exception as e:
         raise Exception(f"An error occurred while running the crew: {e}")
+    
+    if __name__ == "__main__":
+        run()
