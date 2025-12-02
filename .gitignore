@@ -184,3 +184,5 @@ cython_debug/
 
 # Ignore test files
 test.ipynb
+test/
+tests/
