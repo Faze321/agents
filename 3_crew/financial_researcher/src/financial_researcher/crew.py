@@ -32,7 +32,7 @@ class ResearchCrew():
     def analysis_task(self) -> Task:
         return Task(
             config=self.tasks_config['analysis_task'],
-            output_file='output/report.md'
+            output_file='output/report2_2.md'
         )
 
     @crew
