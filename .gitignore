@@ -175,8 +175,6 @@ cython_debug/
 
 .DS_Store
 
-# Ignore Crew engineering team output
-3_crew/engineering_team/output/
 
 # Ignore Accounts database in capstone project
 6_mcp/accounts.db
@@ -184,5 +182,6 @@ cython_debug/
 
 # Ignore test files
 test.ipynb
+test.py
 test/
 tests/

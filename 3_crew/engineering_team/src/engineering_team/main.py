@@ -7,6 +7,8 @@ from datetime import datetime
 from engineering_team.crew import EngineeringTeam
 
 warnings.filterwarnings("ignore", category=SyntaxWarning, module="pysbd")
+# Disable telemetry to avoid remote connection timeout errors
+os.environ['OTEL_SDK_DISABLED'] = "true"
 
 # Create output directory if it doesn't exist
 os.makedirs('output', exist_ok=True)
