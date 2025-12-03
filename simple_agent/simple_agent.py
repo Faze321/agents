@@ -4,7 +4,7 @@ from openai import AsyncOpenAI
 from typing import Any
 
 _PROVIDER_DEFAULTS = {
-    "deepseek": (os.getenv("DEEPSEEK_API_KEY"), "https://api.deepseek.ai/v1"),
+    "deepseek": (os.getenv("DEEPSEEK_API_KEY"), "https://api.deepseek.com/v1"),
     "gemini": (os.getenv("GEMINI_API_KEY"), "https://generativelanguage.googleapis.com/v1beta/openai/")
 }
 
