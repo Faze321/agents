@@ -2,11 +2,14 @@
 import sys
 import warnings
 import os
-from datetime import datetime
+
+# 禁用遥测，避免远程连接超时错误
+os.environ['OTEL_SDK_DISABLED'] = 'true'
+
+warnings.filterwarnings("ignore", category=SyntaxWarning, module="pysbd")
 
 from coder.crew import Coder
 
-warnings.filterwarnings("ignore", category=SyntaxWarning, module="pysbd")
 
 # Create output directory if it doesn't exist
 os.makedirs('output', exist_ok=True)
@@ -25,6 +28,5 @@ def run():
     result = Coder().crew().kickoff(inputs=inputs)
     print(result.raw)
 
-
-
-
+if __name__ == "__main__":
+    run()
