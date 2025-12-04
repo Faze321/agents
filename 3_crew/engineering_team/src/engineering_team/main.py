@@ -4,14 +4,14 @@ import warnings
 import os
 from datetime import datetime
 
-from engineering_team.crew import EngineeringTeam
-
 warnings.filterwarnings("ignore", category=SyntaxWarning, module="pysbd")
 # Disable telemetry to avoid remote connection timeout errors
 os.environ['OTEL_SDK_DISABLED'] = "true"
 
+from engineering_team.crew import EngineeringTeam
+
 # Create output directory if it doesn't exist
-os.makedirs('output', exist_ok=True)
+os.makedirs('output2', exist_ok=True)
 
 requirements = """
 A simple account management system for a trading simulation platform.
