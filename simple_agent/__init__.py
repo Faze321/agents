@@ -1,5 +1,9 @@
-from .simple_agent import SimpleAgent
+from .simple_agent import (
+    agent,
+    chatopenai
+)
 
 __all__ = [
-    "SimpleAgent"
+    "agent",
+    "chatopenai"
 ]
