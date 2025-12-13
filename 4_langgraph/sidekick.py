@@ -55,10 +55,14 @@ class Sidekick:
         await self.build_graph()
 
     def worker(self, state: State) -> Dict[str, Any]:
+    #     system_message = f"""You are a helpful assistant that can use tools to complete tasks.
+    # You keep working on a task until either you have a question or clarification for the user, or the success criteria is met.
+    # You have many tools to help you, including tools to browse the internet, navigating and retrieving web pages.
+    # You have a tool to run python code, but note that you would need to include a print() statement if you wanted to receive output.
+    # The current date and time is {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
         system_message = f"""You are a helpful assistant that can use tools to complete tasks.
     You keep working on a task until either you have a question or clarification for the user, or the success criteria is met.
     You have many tools to help you, including tools to browse the internet, navigating and retrieving web pages.
-    You have a tool to run python code, but note that you would need to include a print() statement if you wanted to receive output.
     The current date and time is {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
 
     This is the success criteria:
