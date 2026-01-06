@@ -5,5 +5,6 @@ from .simple_agent import (
 
 __all__ = [
     "agent",
-    "chatopenai"
+    "chatopenai",
+    "openaichatcompletionsclient"
 ]

@@ -3,6 +3,7 @@ from agents import OpenAIChatCompletionsModel, Agent
 from openai import AsyncOpenAI
 from typing import Any
 from langchain_openai import ChatOpenAI
+from autogen_ext.models.openai import OpenAIChatCompletionClient
 
 _PROVIDER_DEFAULTS = {
     "deepseek": (os.getenv("DEEPSEEK_API_KEY"), "https://api.deepseek.com/v1"),
@@ -71,4 +72,38 @@ def chatopenai(
                     **kwargs
                 )
         if api_key is None:
+            raise ValueError(f"模型名称 '{model}' 不支持。")
+        
+def openaichatcompletionsclient(
+        *,
+        model: str,
+        **kwargs: Any
+):
+    api_key = None
+    base_url = None
+    model_lower = model.lower()
+    # 如果是 GPT 模型，直接使用OPENAI SDK
+    if model_lower.startswith("gpt"):
+        return OpenAIChatCompletionClient(
+            model=model,
+            **kwargs
+        )
+    # 反之则在提供商中查找
+    else:
+        if model_lower.startswith("deepseek"):
+                api_key, base_url = _PROVIDER_DEFAULTS["deepseek"]
+                return OpenAIChatCompletionClient(
+                    model=model,
+                    api_key=api_key,
+                    base_url=base_url,
+                    model_info={
+                        "vision": False,
+                        "function_calling": True,
+                        "json_output": False,
+                        "family": "deepseek",
+                        "structured_output": False,
+                        },
+                    **kwargs
+                )
+        else:
             raise ValueError(f"模型名称 '{model}' 不支持。")
