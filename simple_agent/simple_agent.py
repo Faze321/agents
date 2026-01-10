@@ -16,7 +16,7 @@ def agent(
         instructions: str,
         model: str,
         **kwargs: Any
-):
+) -> Agent:
     api_key = None
     base_url = None
     model_lower = model.lower()
@@ -49,7 +49,7 @@ def chatopenai(
         *,
         model: str,
         **kwargs: Any
-):
+) -> ChatOpenAI:
     api_key = None
     base_url = None
     model_lower = model.lower()
@@ -78,7 +78,7 @@ def openaichatcompletionsclient(
         *,
         model: str,
         **kwargs: Any
-):
+) -> OpenAIChatCompletionClient:
     api_key = None
     base_url = None
     model_lower = model.lower()

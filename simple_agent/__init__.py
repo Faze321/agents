@@ -1,6 +1,7 @@
 from .simple_agent import (
     agent,
-    chatopenai
+    chatopenai,
+    openaichatcompletionsclient
 )
 
 __all__ = [
