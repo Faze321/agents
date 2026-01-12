@@ -36,7 +36,7 @@ class Creator(RoutedAgent):
 
     def __init__(self, name) -> None:
         super().__init__(name)
-        model_client = OpenAIChatCompletionClient(model="gpt-4o-mini", temperature=1.0)
+        model_client = OpenAIChatCompletionClient(model="deepseek-chat", temperature=1.0)
         self._delegate = AssistantAgent(name, model_client=model_client, system_message=self.system_message)
 
     def get_user_prompt(self):
